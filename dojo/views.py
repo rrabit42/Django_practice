@@ -36,7 +36,7 @@ def post_list3(request):
 
 
 def excel_download(request):
-    #filepath = 'C:\dev\\askdjango\\useforpractice.xlsx'
+    # filepath = 'C:\dev\\askdjango\\useforpractice.xlsx'
     filepath = os.path.join(settings.BASE_DIR, 'useforpractice.xls')
     filename = os.path.basename(filepath)
     with open(filepath, 'rb') as f:
