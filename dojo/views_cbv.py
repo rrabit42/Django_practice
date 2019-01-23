@@ -48,7 +48,7 @@ class PostListView3(View):
 post_list3 = PostListView3.as_view()
 
 
-class PostListView4(View):
+class ExcelDownLoadView(View):
     excel_path = 'C:\dev\\askdjango\\useforpractice.xlsx'
     def get(self, request):
         filename = os.path.basename(self.excel_path)
@@ -57,4 +57,4 @@ class PostListView4(View):
             response['Context-Disposition']='attachment; filename="{}'.format(filename)
             return response
 
-post_list4 = PostListView4.as_view()
+post_list4 = ExcelDownLoadView.as_view()
