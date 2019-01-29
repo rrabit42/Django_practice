@@ -21,36 +21,39 @@
                     <li>템플릿 경로를 blog/templates/post_list.html 경로가 아닌 blog/templates/blog/post_list.tml 경로를 쓰는 지에 대한 이유는, 후에 Template Loader에서 설명합니다.</li>
                   </ul>
             </div>
-                <p>
-                     <form action="" method="get">
-                        <input type="text" name="q" value="{{ q }}" />
-                        <input type="submit" value="검색" class="btn btn-primary"/>
-                     </form>
-                </p>
-                     <table class="table table-hover table-bordered">
-                         <thead>
-                                <tr>
-                                    <th>id</th>
-                                    <th>title</th>
-                                    <th>author</th>
-                                    <th>updated_at</th>
-                                </tr>
-                         </thead>
-                         <tbody>
-                            {% for post in post_list %}
-                            <tr>
-                                <td>{{ post.id }}</td>
-                                <td><a href="{% url "blog:post_detail" post.id %}">
-                                 {# <a href="/blog/{{ post.id }}/">#}
-                                    {{ post.title }}
-                                </a></td>
-                                <td><small>by {{ post.author }}</small></td>
-                                <td><small>at {{ post.update_at }}</small></td>
-                            </tr>
-                            {%  endfor %}
-                         </tbody>
-                     </table>
-        </div>
+
+        <a href="{% url "blog:post_new" %}" class="btn btn-primary pull-right">New Post</a>
+
+
+        <form action="" method="get">
+            <input type="text" name="q" value="{{ q }}" />
+            <input type="submit" value="검색" class="btn btn-primary"/>
+        </form>
+
+
+        <table class="table table-hover table-bordered">
+             <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>title</th>
+                        <th>author</th>
+                        <th>updated_at</th>
+                    </tr>
+             </thead>
+             <tbody>
+                {% for post in post_list %}
+                <tr>
+                    <td>{{ post.id }}</td>
+                    <td><a href="{% url "blog:post_detail" post.id %}">
+                     {# <a href="/blog/{{ post.id }}/">#}
+                        {{ post.title }}
+                    </a></td>
+                    <td><small>by {{ post.author }}</small></td>
+                    <td><small>at {{ post.update_at }}</small></td>
+                </tr>
+                {%  endfor %}
+             </tbody>
+         </table>
     </div>
 </div>
 
