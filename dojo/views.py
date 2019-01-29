@@ -1,7 +1,39 @@
 import os
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf import settings
+from .models import Post
+from .Forms import PostForm
+
+
+def post_new(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            #방법1)
+            # post = Post()
+            # post.title = form.cleaned_data['title']
+            # post.content = form.cleaned_data['content']
+            # post.save()
+
+            # #방법2)
+            # post = Post(title=form.cleaned_data['title'],
+            #             content= form.cleaned_data['content'])
+            # post.save()
+
+            # #방법3)
+            # post = Post.objects.create(title=form.cleaned_data['title'],
+            #                            content = form.cleaned_data['content'])
+
+            #방법4)
+            post = Post.objects.create(**form.cleaned_data)  #사전이니까 **두개써서 unpack 한거임.
+
+            return redirect('/dojo/')
+    else:
+        form = PostForm()
+    return render(request, 'dojo/post_form.html', {
+        'form': form
+    })
 
 
 def mysum(request, numbers):
