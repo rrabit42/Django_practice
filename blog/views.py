@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
@@ -34,9 +35,8 @@ def post_new(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save()
+            messages.success(request, '새 포스팅을 저장했습니다,')
             return redirect(post)   #post.get_absolute_url()를 통해서 이동함 => post detail
-        pass
-
     else:
         form = PostForm()
     return render(request, 'blog/post_form.html', {
@@ -50,6 +50,7 @@ def post_edit(request, id):
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             post = form.save()
+            messages.success(request, '포스팅을 수정했습니다.')
             return redirect(post)   #post.get_absolute_url()를 통해서 이동함 => post detail
         pass
 
