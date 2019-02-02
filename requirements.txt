@@ -4,3 +4,7 @@ django-extensions
 ipython[notebook]
 django-bootstrap3
 pillow
+pilkit
+requests
+django-imagekit (설치 후 settings.INSTALLED_APPS에 imagekit 추가)
+
