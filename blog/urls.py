@@ -13,5 +13,6 @@ urlpatterns = [
     path('<int:id>/edit/', views.post_edit, name='post_edit'),
 
     path('cbv/new/', views_cbv.post_new),
-    path('cbv/<int:pk>/edit', views_cbv.post_edit),
+    path('cbv/<int:pk>/edit/', views_cbv.post_edit),
+    path('cbv/<int:pk>/delete/', views_cbv.post_delete),
 ]
