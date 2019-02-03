@@ -1,7 +1,9 @@
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from django import forms
 from .models import Post
 
+
+post_list = ListView.as_view(model=Post, paginate_by=10)
 
 class PostForm(forms.ModelForm):
     class Meta:
