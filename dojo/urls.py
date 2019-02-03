@@ -6,6 +6,7 @@ app_name="dojo"
 
 urlpatterns = [
     path('new/', views.post_new),
+    path('<int:id>', views.post_detail),
     path('<int:id>/edit/', views.post_edit),
     re_path(r'^sum/(?P<numbers>[\d/]+)/$', views.mysum),
     #\d나 /가 1번 이상 반복되면 함수 호출
